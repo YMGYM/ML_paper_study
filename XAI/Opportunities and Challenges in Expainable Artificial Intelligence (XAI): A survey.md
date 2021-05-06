@@ -211,7 +211,7 @@ XAI는 결과물을 사람이 인식할 수 있게 해석하므로 투명성과 
 
 
 
-투명성이 필요한 이유를 잘 나타내는 예시가 두 개 있다.
+논문은 투명성이 필요한 이유를 두 가지 제시합니다.
 
 ![survey_4](https://github.com/YMGYM/ML_paper_study/blob/main/XAI/Images/survey_4.png?raw=true)
 
@@ -318,9 +318,9 @@ XAI 기법은 인공지능을 사용하고 제작하는 데 많은 이점을 가
 
 - 학습이 완료되면 다음과 같은 결과가 나오게 됩니다.
 
-![Some convnet filters](https://blog.keras.io/img/conv5_2_stitched_filters_8x3.png)
+![img](https://raw.githubusercontent.com/raghakot/keras-vis/master/images/dense_vis/cover.png?raw=true)
 
-출처 : [How convolutional neural networks see the world](https://blog.keras.io/how-convolutional-neural-networks-see-the-world.html)
+출처 : https://github.com/raghakot/keras-vis
 
 
 
@@ -530,20 +530,22 @@ SHAP 방법은 의료 분야에서 의사결정을 설명하기 위해 종종 �
 참고 : https://glassboxmedicine.com/2019/07/13/class-model-visualization-for-cnns/
 
 - Activation Maximization을 Class Model을 사용하여 글로벌하게 확장한 방법입니다.
+
 - 이미지 클래스를 분류하는 모델$f$ 는 $c$ 클래스 이미지 $I$에 대해 예측값을 반환합니다.
+
 - 이 클래스 이미지의 확률 $S_c(I)$ 를 최대화하는 방향으로 학습되게 됩니다. 
+
 - 설명 이미지는 $I' = argmax S_c(I) - \lambda ||I||^2_2$ 으로 표현됩니다.
+
 - L2 Norm부분은 이미지가 너무 극단적인 값으로 뛰는 것을 막아주게 됩니다.
 
 - 이렇게 생성된 이미지는 블랙박스 모델이 특정 클래스에 대해 어떤 특징을 학습했는지를 나타낼 수 있습니다.
 
 - 몽환적이고, 알록달록한 색 때문에 생성된 이미지를 'Deep Dream' 이라고 부르기도 한다고 합니다.
 
+  ![Some convnet filters](https://blog.keras.io/img/conv5_2_stitched_filters_8x3.png)
   
-
-<img src="https://www.researchgate.net/profile/Talley-Lambert/publication/312620507/figure/fig3/AS:453895710351363@1485228578818/Class-Model-Visualization-We-estimated-class-models-from-either-the-healthy-top-row-or.png" alt="Class Model Visualization. We estimated class models from either the healthy (top row) or sick (bottom row) classes. Initializing the model image I to a zero image (left panels) produced structures weakly reminiscent of nucleoli for the healthy class (upper left panel) and more disorganized images for the sick class (lower left panel). Initializing I to an image from the opposing class (right panels) added nucleoli to sick cells and removed vacuoles (upper right panel) but again produced more chaotic alterations when modeling the sick class (lower right panel). We interpret these changes cautiously, as some aspects of these alterations may be due to regularization.  " style="zoom:50%;" />
-
-출처 : [DeadNet: Identifying Phototoxicity from Label-free Microscopy Images of Cells using Deep ConvNets](https://www.researchgate.net/figure/Class-Model-Visualization-We-estimated-class-models-from-either-the-healthy-top-row-or_fig3_312620507)
+  출처 : [How convolutional neural networks see the world](https://blog.keras.io/how-convolutional-neural-networks-see-the-world.html)
 
 
 
@@ -562,7 +564,6 @@ SHAP 방법은 의료 분야에서 의사결정을 설명하기 위해 종종 �
 > 2. B는 우리가 선택한 데이터의 집합(Budget)이다.
 > 3. $f$를 최대한 많이 설명하는 가장 적은 데이터 입력을 수행하는 경우를 $B$ 에서 찾는다.
 > 4. 이때 탐욕 알고리즘 (전체를 모두 수행하는 방법) 이 사용된다.
->
 
 
 
