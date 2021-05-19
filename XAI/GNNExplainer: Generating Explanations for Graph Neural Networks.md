@@ -104,4 +104,61 @@
 
 - 또는 프로토타입 그래프 $A$를 두고 adjacency matrices를 정렬해 합쳤다.
 
-  
+
+
+
+### GNNExplainer model extentions
+
+- GNNExplainer 는 모델의 수정 없이 예측과 그래프 분류를 제공한다.
+- GNNExplainer는 현재 그래프 기반 모델에 대부분 적용이 가능하다.
+- 이 때 시간복잡도는 노드 $v$ 에 대한 계산 그래프 $G_c$ 의 크기에 따라결정된다.
+- 주로 이 그래프는 상대적으로 크지 않기 때문에, GNNExplainer가 효과적으로 설명을 만들어 낼 수 있다.
+
+
+
+## Experiments
+
+- 본 논문의 정량적, 정성적 분석은 GNNExplainer 가 그래프 구조나, 노트 피쳐 면에서 효과적이고 정확한 설명 도구임을 보여 준다.
+
+- Synthetic dataset : 4개의 분류 데이터셋을 사용했다.
+- Real-world dataset : 2개의 그래프 분류 데이터셋을 사용했다.
+- Alternative baseline approaches : 그래디언트 기반의 'GRAD' 방법과, 어텐션 기반의 ATT방법을 사용했다.
+- Setup and implementation details : 학습에 사용된 하이퍼파라미터 수치와, Grad/GNNExplainer를 먼저 학습시키다는 설명 등이 적혀 있다.
+- 본 논문은 다섯 가지 질문에 답한다.
+  - GNNExplainer가 분명한 설명을 제공하는가?
+  - 기존 설명 방법과 비교해서 효과적인가
+  - GNNExplainer가 다양한 그래프 기반 예측 태스크에서 효과적인가
+  - 다른 GNN 네트워크에서 예측한 것을 설명할 수 있을까?
+
+
+
+### Quantitative analyses
+
+본 논문은 explanation problem 을 이진 분류 문제로 공식화하고, 좋은 설명성을 가지는 모델은 높은 점수를 가질 것이다.
+
+GNNExplainer는 다른 방법보다 평균적으로 17.1% 으로 높은 성과를 보였으며, Tree-Grid 모델에 비해 43.0% 높은 정확도를 가진다.
+
+
+
+### Qualitive anaylses
+
+Topology-based 예측에서 GNNExplainer는 정확하게 network motif를 확인하는 모습을 보였다.
+
+Reddit 데이터셋에 대해서 다른 데이터셋에 비해 비교적 잘 관계를 파악하는 모습을 보였다.
+
+ATT는 메시지에 대한 중요도를 계산할 수 있었지만, single-instance explanations은 하지 못했다.
+
+모델이 설명가능한지가 중요한 요소이기 때문에, 모델은 쉽게 이해가능한 설명을 내놓을 수 있어야 한다.
+
+GNNExplainer는 적은 수의 feature 개수로부터도 구조적 정보들 고려한다. 반면 gradient-based방법은 노이즈에 취약한 모습도 보였다.
+
+
+
+
+
+## Conclusion
+
+- 본 논믄은 GNN 환경에서 하나의 조정 없이 예측에 대한 설명을 제공하는 GNNExplainer를 제시했다.
+- GNNExplainer는 재귀적인 방법을 통해서 중요한 그래프 경로와, 관계가 높은 노드를 하이라이팅 할 수 있다.
+- 본 논문의 연구는 합리적인 구조로 접근하며, 직관적인 인터페이스를 제공한다는 점에서 독창적이라고 볼 수 있다.
+
