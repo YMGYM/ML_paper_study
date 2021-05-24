@@ -103,3 +103,10 @@ Grad-CAM은 fully connected layer가 있는 네트워크에도 적용이 된다.
 2. 이 값을 GAP를 통과시켜 $a^c_k$를 구한다.
 3. $a^c_k$ 은 partial linearization 이라고 부르며, 타겟 클래스 $c$에 대한 피처 맵 $k$의 중요성을 나타낸다.
 4. 이 값에 ReLU를 써서 양수만 남긴다.
+
+
+
+
+
+### 3-1 Grad-CAM generalizes CAM
+
