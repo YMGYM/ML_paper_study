@@ -22,7 +22,7 @@
 
 먼저 우리가 지금 까지 알고 있는 일반적인 학습 방법인 Single-Task Learning (단일 태스크 학습) 입니다.
 
-![single-task](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/single-task.png)
+![single-task](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/single-task.png)
 
  
 
@@ -38,7 +38,7 @@ Single-Task, Multi-Task 등등 태스크 라는 말을 많이 사용했는데 Ta
 
 본 강의에서 Task는 다음과 같이 정의되어 있습니다.
 
-![task](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/task.png)
+![task](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/task.png)
 
 Task $T$ 는 입력 값 $X$ 에 대해서 입력값의 분포, 입력에 대한 출력값의 분포, 손실 함수 등을 사용하는 과정으로 생각할 수 있습니다.
 
@@ -85,7 +85,7 @@ task descriptor의 상태에 따라 신경망이 다르게 작동한다고 생�
 
 
 
-![task-flow](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/task-flow.png)
+![task-flow](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/task-flow.png)
 
 
 
@@ -107,7 +107,7 @@ task가 여러 가지가 있는 경우는, 목적함수는 Task들의 손실 함
 
 따라서 메타 러닝 문제에서 손실 함수는 다음과 같은 형태를 띄게 됩니다.
 
-![loss_func](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/loss_func.png)
+![loss_func](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/loss_func.png)
 
 
 
@@ -128,7 +128,7 @@ task가 여러 가지가 있는 경우는, 목적함수는 Task들의 손실 함
 
 이 방법에는 여러 가지가 있는데, 가장 먼저 생각나는 것은 네트워크를 피쳐별로 분할하는 것입니다.
 
-![task-conditioning](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/task-conditioning.png)
+![task-conditioning](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/task-conditioning.png)
 
 
 
@@ -142,13 +142,13 @@ task가 여러 가지가 있는 경우는, 목적함수는 Task들의 손실 함
 
 또다른 방법으로로는 각각의 과제별로 입력값이나 활성화 값을 연결하여 하나의 네트워크로 취급하고 학습할 수 있습니다.
 
-![task-conditioning2](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/task-conditioning2.png)
+![task-conditioning2](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/task-conditioning2.png)
 
 이 방법에서는 각각의 과제별로 **공유하는 파라미터와 공유하지 않는 파라미터**가 나뉘어집니다.
 
 따라서 이 방법을 사용할 때의 목적 함수는 다음 식으로 나타낼 수 있습니다.
 
-![multi-task](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/multi-task.png)
+![multi-task](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/multi-task.png)
 
 
 
@@ -164,7 +164,7 @@ task가 여러 가지가 있는 경우는, 목적함수는 Task들의 손실 함
 
 먼저 입력 값에 각 Task Descriminator를 연결 하거나 더해 주는 방법이 있을 수 있습니다.
 
-![conditioning-choice1](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/conditioning-choice1.png)
+![conditioning-choice1](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/conditioning-choice1.png)
 
 
 
@@ -174,7 +174,7 @@ task가 여러 가지가 있는 경우는, 목적함수는 Task들의 손실 함
 
 ### 멀티헤드 구조
 
-![conditioning-choice2](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/conditioning-choice2.png)
+![conditioning-choice2](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/conditioning-choice2.png)
 
 태스크가 각각 어떻게 공유되는지 특별히 지정된 것이 없는 경우 다음과 같은 방법을 사용할 수 있다고 합니다.
 
@@ -184,7 +184,7 @@ task가 여러 가지가 있는 경우는, 목적함수는 Task들의 손실 함
 
 ### 곱셈적(Multiplicative) 구조
 
-![conditioning-choice3](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/conditioning-choice3.png)
+![conditioning-choice3](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/conditioning-choice3.png)
 
 가장 흔한 방법 중 하나입니다. 덧셈적 구조에서 덧셈을 곱셈으로만 바꾼 구조입니다.
 
@@ -197,7 +197,7 @@ task가 여러 가지가 있는 경우는, 목적함수는 Task들의 손실 함
 
 ### 기타
 
-![conditioning-choice4](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/conditioning-choice4.png)
+![conditioning-choice4](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/conditioning-choice4.png)
 
  이 외에도 수많은 복잡한 알고리즘이 있지만, 시간 문제상 다루지 않았습니다.
 
@@ -251,7 +251,7 @@ CIFAR-100 데이터셋의 데이터로 확인해 본 결과 단일 모델이 성
 
 
 
-![negative-transfer](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/negative-transfer.png)
+![negative-transfer](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/negative-transfer.png)
 
 이 문제가 발생하는 원인이 무엇일까요?
 
@@ -307,7 +307,7 @@ Negative transfer를 해결하기 위해서는 태스크 간 공유되는 것을
 
 일반적인 지도학습 영역에서 출발합니다.
 
-![mata-learning1](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/mata-learning1.png)
+![mata-learning1](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/mata-learning1.png)
 
 이 식에서 주로 확인해야 하는 것은 마지막 줄입니다.
 
@@ -329,7 +329,7 @@ $logp(y_i|x_i, \phi)$ 는 주어진 데이터 $x_i$와 파라미터 $\phi$ 에�
 
  
 
-![mata-learning2](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/mata-learning2.png)
+![mata-learning2](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/mata-learning2.png)
 
 각각의 작업 별로 데이터를 따로 분할하여 이 전체의 집합을 메타 학습 데이터로 취급합니다.
 
@@ -343,7 +343,7 @@ $logp(y_i|x_i, \phi)$ 는 주어진 데이터 $x_i$와 파라미터 $\phi$ 에�
 
 메타 학습 데이터를 활용한 Output의 분포는 다음 수식으로 나타낼 수 있습니다.
 
-![meta-learning3](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/meta-learning3.png)
+![meta-learning3](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/meta-learning3.png)
 
 
 
@@ -355,7 +355,7 @@ $logp(y_i|x_i, \phi)$ 는 주어진 데이터 $x_i$와 파라미터 $\phi$ 에�
 
 ## 메타러닝 학습 과정
 
-![learning_cycle](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/learning_cycle.png)
+![learning_cycle](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/learning_cycle.png)
 
 
 
@@ -369,7 +369,7 @@ $logp(y_i|x_i, \phi)$ 는 주어진 데이터 $x_i$와 파라미터 $\phi$ 에�
 
 
 
-![learning_data](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/learning_data.png)
+![learning_data](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/learning_data.png)
 
 메타 트레인에 사용되는 데이터셋 $D_{meta-train}$의 경우는 $D^{tr}_i$ 와, $D^{ts}_i$ 로 구성됩니다. 전자는 $i$ 번째 태스크의 학습용 데이터, 후자는 테스트 데이터입니다.
 
@@ -381,7 +381,7 @@ $logp(y_i|x_i, \phi)$ 는 주어진 데이터 $x_i$와 파라미터 $\phi$ 에�
 
 위 내용을 한 번에 정리한 이미지가 강의 중에 나와서 소개해 보고자 합니다.
 
-![overall](/Users/jun/My Works/paperStudy/ML_paper_study/cs330/images/overall.png)
+![overall](https://raw.githubusercontent.com/YMGYM/ML_paper_study/main/cs330/images/overall.png)
 
 
 
