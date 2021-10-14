@@ -65,3 +65,6 @@
   - 주로 마스킹을 사용함
   - torch_audio transform 을 쓰는 것이 편함
 - Data Split
+
+## Data Loader
+- 
