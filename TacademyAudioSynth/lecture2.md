@@ -18,17 +18,17 @@
 - Error minimization, Autocorrelation 방법으로 최적화
 - 적당한 수의 LPC를 구해야 함(하모닉스 모델링 때문)
 
-# Cepstrum Analysis
+## Cepstrum Analysis
 - Homomorphic system - 컨볼루션을 더하기로 바꿔주는 시스템
 - 셉스트럼 : 푸리에 -> 로그 -> 역푸리에
 - 왜 로그 -> Envelope: 천천히 변하는 성분 , 하모닉스 : 빠르게 변하는 성분 -> 로그를 통해서 분리하고,,
 - 역 푸리에 변환을 하면 인벨롭: 저주파, 하모닉스: 고주파
 
-# MFCC
+## MFCC
 - pre-emphasis : 노이즈에 강인한
 - Mel-filterbank
   
-# Mel generalized Ceptrum
+## Mel generalized Ceptrum
 - 곱해지는 범위에 따라 LPC인지, 스펙트럼인지..
 
 # Speech Production
