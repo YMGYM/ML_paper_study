@@ -109,3 +109,98 @@
 - Style Transfer 의 아이디어가 적용되어서 MIDI-VAE 등이 나타남
 - Transfer Learning을 사용해서 적용 가능 (예를 들어 jazz 데이터셋으로 학습한 뒤 다른 데이터셋으로 미세조정 실시)
 - 하모니와 텍스처도 종종 연구되기도 한다.
+
+# Instrumentation and Orchestration
+기악과 편곡(Instrumentation and Orchestration) 은 음악 장르에 있어서 기본적인 요소이며 작곡가의 특징을 나타낸다. 기악(Instrumentation)은 비슷한 악기들을 앙상블을 만들기 위해 조합하는 방법을 나타내며, 편곡(Orchestration)은 비슷하거나 다르게 작성된 섹션을 선택 및 조합하는 것이다.
+
+## From Polyphonic to Multi-Instrument Music Generation
+- 현존하는 딥 러닝 기반 모델들은 컴퓨터 음악이 사용하는 Multi-Track 부분에 적합하지 않다.
+- 생성한 트랙들이 같은 화성을 따라가야 하는데 그러지 않음 (음색과 화음을 고려하지 않는다)
+- 현재 해결에 많은 어려움을 겪는 중
+
+## Multi-Instrument Generation from Scratch
+- 예전엔 드럼 - 멜로디 생성 모델들이 종종 있었음
+- GAN과 VAE를 사용해서 주로 생성함
+  - MuseGAN
+  - MusAE
+- Transformer를 사용하기도 함 (MusicTransformer, LakhNES)
+- Conditional Multi-Track Music Generation Model(MMM)
+  - 노트를 지우고 복원하는 방법을 통해(BarFill) 학습
+  - 단일 트랙을 합쳐서 음악을 생성하는 방식
+- 이 방식들은 기악과 편곡에는 적합하지 않음
+  - 다른 트랙들의 특징 (Key 등..) 을 파악하기 어려움
+  - 악기의 수를 정하거나 높은 질의 멜로디 작곡을 하기 어려움
+
+# Evalutaion and Metrics
+딥 러닝 작곡 모델의 평가 방법은 객관적인 방법과 주관적인 방법이 모두 존재한다. 특히 음악 작곡은 '창의성'의 영역을 측정해야 하기 때문에 주관적인 방법이 중요하다. 객관적인 방법은 모델의 결과의 질을 정량화하는데 도움이 된다. 
+
+## Objective Evaluation
+- 모델의 성능 측정에 다음 지표를 사용한다
+  - perplexity, BLEU, precision, recall, F-score, loss(?)
+- 음악적인 요소를 가미한 지표들도 있다.
+  - Pitch-related, Rhythm-related, Harmony-related, Style Transfer-related (Ji et al.)
+
+## Subjective Evaluation
+- 음악의 창의성, 참신성 부분을 평가함
+- 가장 많이 사용되는 방법 : 사람이 듣고 작곡가가 누구인지 맞추는 방식
+- Side-by-side rating : 스코어 기반의 방식
+- 평가하는 사람의 구성 특징을 잘 생각해야 함
+- 많이 들을수록 피로가 쌓이는 것을 감안해야함
+
+# Discussion
+
+> Are the current DL models capable of generating music with a certain level of creativity?
+
+MusicVAE의 경우에는 긴 음악을 생성할 수 있으나, 음악의 리듬과 같은 패턴을 인식하지 못하는 것 같은 모습을 보인다.
+
+
+> What is the best NN architecture to perform music composition with DL?
+
+더 긴 시계열을 만들기 위해 Transformer 구조가 도입되었다.
+
+VAE, GAN의 경우 스타일과 같은 고레벨 특징들을 추출할 수 있는 특징이 있다.
+
+따라서 Best를 구하기는 어려울듯 하다.
+
+
+> Could end-to-end moethods generate entire structured music pieces?
+
+아직까지 완전한 구조를 만들 수 있는 모델은 존재하지 않는다.
+
+조만간 가능해질 것으로 보이긴 한다.
+
+하지만 작곡 AI가 사람을 돕는 분야로 발전할지, 혼자 작곡을 다 하는 쪽으로 발전할지는 두고 봐야 할 문제로 보인다.
+
+> Are the composed pieces with DL just an imitataion of the inputs or can NNs generate new music in styles that are not present in the training data?
+
+지금까지 제작된 인공지능으로 볼 때 표절이나 모방이 아닌 것으로 확인되었다.
+
+음악 표절은 악기, 리듬, 톤 등 많은 요소들이 있어서 쉽게 일어나기 어렵다.
+
+> Should NNs compose music by following the same logic and process as humans do?
+
+Auto Regression 모델에서 유사성이 보인다.
+
+> How much data do DL models for music generation need?
+
+엄청 많은 음악 데이터가 필요하다.
+
+하지만 최신 모델들의 경우는 텍스트 등 다른 영역에서 pre-trained 된 모델을 가져 와서 전이학습 하는 방법으로 데이터 부족 문제를 해결했다.
+
+> Are current evaluation methods good enough to compare and measure the creativity of the composed music?
+
+음악의 창의성과 NN의 특징 들 모두를 고려하는 평가 지표가 필요하다. 
+
+# Conclusions and Future Work
+
+이 논문에서 DL을 사용한 음악 생성 모델을 살펴보고, 이 분야에서 필요한 몇 가지 질문들을 알아보았다.
+
+본 논문에서 이야기하는 미래 연구 방향은 다음과 같다.
+- 더 긴 음악 시퀀스 생성
+- Human-AI interaction
+- 데이터셋의 편향 해결
+- 더 높은 생상성
+
+본 논문을 넘어서는 고민 방향성
+- 인공지능이 작곡한 음악의 저작권은?
+- 어떤 부분에서 다른 작곡가와 차별화를 둘 수 있을까?
