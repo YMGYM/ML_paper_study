@@ -1,10 +1,12 @@
 #  MUSIC COMPOSITION WITH DEEP LEARNING: A REVIEW 
-[paper](https://arxiv.org/pdf/2108.12290.pdf)
+[원본 논문 보기](https://arxiv.org/pdf/2108.12290.pdf)
 
 작성자 : [15기 안민준](https://github.com/YMGYM)
 
-본 논문은 동명의 논문의 내용을 정리하고 공유하기 위해 만들었습니다.
+본 리뷰는 투빅스 15&16기 음성 세미나에서 동명의 논문의 내용을 정리하고 공유하기 위해 만들었습니다.
+
 출처가 적혀 있지 않은 이미지는 모두 본 논문에 수록된 이미지입니다.
+
 
 # Abstract
 - 본 논문은 AI의 음악 작곡과 인간의 음악 작곡과 창작 과정을 연결하는 관계를 찾는 것을 목표로 한다.
@@ -21,6 +23,10 @@
   - Harmonization
 
 ## From Algorithmic Composition to Deep Learning
+음악 작곡 인공지능의 발전 역사에 대해서 서술하고 있다.
+
+크게 알고리즘 중심적인 방법과 신경망 중심적인 방법으로 나눠서 설명한다.
+
 ### 알고리즘적 방법
 - 1980년대 [Experiments in Musical Intelligence (EMI)](https://www.tandfonline.com/doi/abs/10.1080/09298218908570541) (David Cope)
 - 2000년대 Marcov chain 과 음악 문법의 조합 (by David Cope), [Project1(PR1)](https://koenigproject.nl/project-1/) (by Koening)
@@ -35,73 +41,92 @@
 크게 VAE, GAN, LSTM/Transformer 를 사용한 방법으로 구성된다.
 
 ### Variational Auto-Encoders (VAEs)
+
+![VAE](https://github.com/YMGYM/ML_paper_study/blob/main/Music/images/composingReview/img1.png?raw=true)
+
 - Encoder-Decoder 구조
 - latent space 를 생성하는 방법으로 사용
 - 오토인코더에 대한 자세한 설명은 [여기](https://deepinsight.tistory.com/127)서 확인
 
 ### Generative Adversarial Networks (GANs)
+![GAN](https://github.com/YMGYM/ML_paper_study/blob/main/Music/images/composingReview/img2.png?raw=true)
 - Generator $G$, Discriminator $D$로 구분된 네트워크
 - 생성자는 입력 데이터의 확률 분포 $P_g$ 를 학습하며, 구분자는 구분할 수 있는 확률을 높이는 것을 목표로 한다.
 - 생성자와 구분자는 MLP나 LSTM, CNN 으로도 구성될 수 있다.
 
 ### Transformers
+![Transformers](https://github.com/YMGYM/ML_paper_study/blob/main/Music/images/composingReview/img3.png?raw=true)
 - LSTM 등과 같은 Auto-regressive  모델에도 사용할 수 있다.
 - Attention 메커니즘이 핵심
-- 인코더와 디코더에 Attention 을 연결시킴
+- 인코더와 디코더에 Attention 을 연결시켜서 작동하는 방식
 
 # The Music Composition Process
-본 논문은 음악 작곡이 글을 쓰는것과 비슷하다고 설명하며, 아래와 같은 특징을 가진다고 설명한다.
+본 논문은 음악 작곡이 사람이 글을 쓰거나 말을 하는 것과 비슷하다고 설명하며, 아래와 같은 특징을 가진다고 설명한다.
+
 - 음악 작곡 방식의 차이
   - 클래식 음악 : motif 를 멜로디나 music phrase 로 발전시킴
   - pop/jazz : 코드 진행을 즉흥 연주, 작곡을 사용해 멜로디로 발전
-- 두 가지 부분으로 구성됨 : 멜로디, 반주
+- 두 가지 부분으로 구성됨
+  - 멜로디 (melodic part)
+  - 반주(accompaniment part)
 - 다양한 악기들 (다른 주파수 특징을 가짐)을 기악(Instrumentation)과 편곡(Orchestration) 을 사용해서 쌓는다.
-- 음악의 두 가지 특징 : 시간(리듬) 과 화음
-- 이미지로 본다면 시간은 가로축, 화음은 세로축으로 볼 수 있음
-- 시간 축의 구성
-  - 저레벨 : Notes(음)
-  - 고레벨 : sections (섹선)
-- 화음 축의 구성
-  - 저레벨 : 노트 단위
-  - 고레벨 : 코드 -> 코드의 연속 : 코드 진행
+- 음악의 두 가지 특징
+  - 시간(리듬)
+    - 이미지의 가로축과 비슷
+    - 음악의 구조와 연관
+    - 저레벨 : Notes(음)
+    - 고레벨 : sections (섹선)
+  - 화음
+    - 이미지의 세로축과 비슷
+    - 노트, 피치, 코드 등 화성(harmony)의 구성을 담당한다.
+    - 저레벨 : 노트(note) 단위
+    - 고레벨 : 코드
+    - 코드의 연속 : 코드 진행 (chord progression)
 
-이로 볼 때 시간 축은 음악의 구조와 연관이 되고, 화음 축은 노트, 피치, 코드 등 Harmony(화성)의 구성을 담당한다.
 
 ## 기본적인 음악의 구성 요소
+![musicElement](https://github.com/YMGYM/ML_paper_study/blob/main/Music/images/composingReview/img4.png?raw=true)
+
 - Harmony(화성) : 노트 -> **화성** -> 코드 -> 진행
-- Music Form or Structure : 모티프 -> 프레이즈 -> 섹션 -> 섹션의 구성: 작곡
-- Melody and Texture : 텍스쳐는 음악의 소재가 하나의 작품으로 결합된 것. 단선율, 다선율의 노트들이 멜로디
-- Instrumentation(기악) and Orchestration(편곡) : 기악은 악기 조합에 초점을, 편곡은 멜로디의 배분에 초점을 맞춘다. 기악의 경우 track으로 조직됨
+- Music Form or Structure : 모티프 -> 프레이즈 -> 섹션 -> 작곡(섹션의 구성)
+- Melody and Texture
+  - 텍스쳐 :  음악의 소재가 하나의 작품으로 결합된 것
+  - 멜로디 : 단선율, 다선율의 노트들 
+- Instrumentation(기악) and Orchestration(편곡)
+  - 기악은 악기 조합에 초점을 맞춘다. Track 단위
+  - 편곡은 멜로디의 배분에 초점을 맞춘다.
 
 이외에도 Dynamic(다이내믹) 부분이 있지만, 작곡보단 연주에 더 집중된 부분이므로 본 논문에선 다루지 않는다.
 
 # Melody Generation
 
+![melody](https://github.com/YMGYM/ML_paper_study/blob/main/Music/images/composingReview/img5.png?raw=true)
+
 ## Deep Learning Models for Melody Generation: From Motifs to Melodic Phrases
 - 일반적으로 음악을 작곡할 때는 모티프나 코드 진행을 작곡하고, 프레이즈나 멜로디로 발전시킴
 - 초기 딥 러닝 모델은 모티프를 작곡하는 시도를 했으며, 이후 더 긴 음악을 작곡하고자 함
 - 이후 창의성을 향상시키기 위해 생성 모델 도입. (현재 MusicVAE가 가장 좋은 성능을 냄)
-- Lakh 데이터셋 (1.5백만개의 곡이나 있다)을 사용해 학습
+- Lakh 데이터셋을 사용해 학습 (1.5백만개의 곡이나 있다..)
 - Music Transformer, MuseNet 등과 같은 Transformer 모델이 후에 등장하여 더 긴 멜로디를 생성할 수 있었다.
-- 아예 긴 멜로디를 생성하려 하면 아예 랜덤하게 생성됨
+- 아예 긴 멜로디를 생성하려 하면 이전 시간과 상관 없이 랜덤하게 생성됨
 - TransformerVAE, Piano Tree와 같은 모델을 섞는 경우도 나타나기 시작 : 더 긴 멜로디를 생성할 수 있음
 - 최근 가장 성능이 좋은 모델은 Denoising Diffusion Probabilistic Models(DDPMs)을 기반으로 한 모델. 64 마디의 곡 생성 가능
 
 ## Structure Awareness
-- 멜로디가 뭉쳐 섹션이 됩니다.
+- 멜로디가 뭉쳐 섹션이 된다.
 - 섹션은 음악 장르에 따라 다양한 이름을 가짐
-  - 팝&트랩 : Chorus, verse ..
+  - 팝&트랩 : Chorus, verse
   - 클래식 : Exposition, development, recapitulation
   - ABAB등으로 쓰이기도 함
-- 짜임새 있는 음악을 만드는 것은 어려운 작업임..
-- Self-Similarity 제약조건을 사용하여 만드려는 시도 (Convolutional Restricted Boltzmann Machine - C-RBM 을 사용한 시도 등) 가 있었음 - 템플릿을 정해놓고 만드는 구조
-- 최근엔 템플릿이 없이 생성하려는 시도를 하고 있음.
+- 짜임새 있는 음악을 만드는 것은 어려운 작업이다.
+- Self-Similarity 제약조건을 사용하여 만드려는 시도 (Convolutional Restricted Boltzmann Machine - C-RBM 을 사용한 시도 등) 가 있었음 - 템플릿을 정해놓고 학습 및 생성을 실행함
+- 최근엔 템플릿 없이 생성하려는 시도를 하고 있음.
 
 ## Harmony and Melody Conditioning
 - Transformer 모델에서 다선율의 멜로디를 작곡할 수 있음
 - 만들어진 멜로디에 화성을 붙이는 작업은 HMM에서 RNN으로 넘어가는 중
 - Multi-Track accompaniment에 대해선 GAN 기반 생성 모델이 우세. (MICA 등)
-- 인간과 같이 코드 반주에서 멜로디를 만들어 내는 모델, ChordAL과 같이 처음부터 다 만드는 모델 등 다양한 모델 또한 시도 중
+- 인간과 같이 코드 반주에서 멜로디를 만들어 내는 모델, ChordAL과 같이 End-to-End 모델 등 다양한 모델 또한 시도 중
 
 ## Genre Transformation with Style Transfer
 - 스타일 변환 : 존재하는 음의 피치를 올리거나, 새로운 악기를 추가하거나 하는 방식의 style transfer
@@ -114,6 +139,9 @@
 기악과 편곡(Instrumentation and Orchestration) 은 음악 장르에 있어서 기본적인 요소이며 작곡가의 특징을 나타낸다. 기악(Instrumentation)은 비슷한 악기들을 앙상블을 만들기 위해 조합하는 방법을 나타내며, 편곡(Orchestration)은 비슷하거나 다르게 작성된 섹션을 선택 및 조합하는 것이다.
 
 ## From Polyphonic to Multi-Instrument Music Generation
+
+![multi-track](https://github.com/YMGYM/ML_paper_study/blob/main/Music/images/composingReview/img6.png?raw=true)
+
 - 현존하는 딥 러닝 기반 모델들은 컴퓨터 음악이 사용하는 Multi-Track 부분에 적합하지 않다.
 - 생성한 트랙들이 같은 화성을 따라가야 하는데 그러지 않음 (음색과 화음을 고려하지 않는다)
 - 현재 해결에 많은 어려움을 겪는 중
@@ -125,6 +153,8 @@
   - MusAE
 - Transformer를 사용하기도 함 (MusicTransformer, LakhNES)
 - Conditional Multi-Track Music Generation Model(MMM)
+  ![MMM](https://github.com/YMGYM/ML_paper_study/blob/main/Music/images/composingReview/img7.png?raw=true)
+
   - 노트를 지우고 복원하는 방법을 통해(BarFill) 학습
   - 단일 트랙을 합쳐서 음악을 생성하는 방식
 - 이 방식들은 기악과 편곡에는 적합하지 않음
@@ -160,7 +190,7 @@ MusicVAE의 경우에는 긴 음악을 생성할 수 있으나, 음악의 리듬
 
 VAE, GAN의 경우 스타일과 같은 고레벨 특징들을 추출할 수 있는 특징이 있다.
 
-따라서 Best를 구하기는 어려울듯 하다.
+따라서 Best를 구하기는 어렵다.
 
 
 > Could end-to-end moethods generate entire structured music pieces?
