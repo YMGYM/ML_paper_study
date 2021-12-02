@@ -13,7 +13,7 @@
 
 음악 생성 모델은 OpenAI의 JUKEBOX 모델을 사용했으며, 태깅 모델은 4 종류를 묶어서 사용했습니다.
 
-이 논문을 통해 소스 분리 작업에서 음악 생성 & 태깅 모델의 가능성을 기대할 수 있겠습니다.
+이 논문을 통해 소스 분리 작업에서 음악 생성 & 태깅 모델의 가능성을 기대할 수 있다고 말합니다.
 
 ## Introduction
 
@@ -23,7 +23,7 @@
 - 최근 연구들은 음악 생성 모델 등을 MIR 쪽에 적용하려는 시도를 하고 있습니다.
 
 ### 본 논문에서는
-- 본 논문에서는 사전 학습된 모델이 musical source seperation 작업에 적용되는지 보일 예정입니다.
+- 본 논문에서는 사전 학습된 모델이 어떻게 musical source seperation 작업에 적용되는지 보일 예정입니다.
 - 태깅 모델의 추론 결과를 JUKEBOX가 생성하는 방법으로 사용했습니다.
 - Gradient Ascent(경사 상승법) 을 JUKEBOX의 임베딩 공간에 적용하고 디코딩된 오디오를 입력값의 마스크로 사용했습니다. (후에 자세히 설명합니다)
   
@@ -70,6 +70,7 @@ jukebox(https://openai.com/blog/jukebox)
 - 음성 입력이 들어가면 VQ-VAE모델이 입력값을 변화시키고 태깅 모델이 변환된 신호에서 sources의 집합들을 태깅합니다.
   
 ### 실행 순서
+![algorithm](https://github.com/YMGYM/ML_paper_study/blob/main/Music/images/sourceSeperationReview/img1.png?raw=True)
 - 분리할 악기들을 기록한 Tag 인 $T_{target}$ 을 생성합니다.
 - 입력 이미지 $x$를 인코더 $V_{encoder}$ 에 넣어 임베딩 $e$를 구합니다.
 - 이 임베딩은 $V_{decoder}$에 의해 웨이브폼 $j$로 변환됩니다.
@@ -101,17 +102,19 @@ jukebox(https://openai.com/blog/jukebox)
 
 ## Results and Discussion
 ### 기존 시스템과 비교
+![algorithm](https://github.com/YMGYM/ML_paper_study/blob/main/Music/images/sourceSeperationReview/img2.png?raw=True)
 - 다른 비지도 학습 논문에 비해 뛰어난 성과를 보였습니다.
 - 반면 특별한 목적에 맞게 설계된 논문보다는 성능이 낮았습니다.
 - 기존보다 더 넓은 Source Type 에 대해서 예측할 수 있는 것이 포인트
 
 ### pretrained model 별 비교
+![algorithm](https://github.com/YMGYM/ML_paper_study/blob/main/Music/images/sourceSeperationReview/img3.png?raw=True)
 - FCN 이 가장 좋은 결과이나, 평가 방식에 따라서 다른 결과가 나타났습니다.
 
 ### 기타 토론
 - 마스킹 시 FFT 크기를 여러 개 잡는 방식, gradient ascent를 100번 수행 등 성능을 높이는 트릭이 존재합니다.
-- Masking을 넣지 않고 모델을 작동 시켜 보니 Style Transfer로서 작동하는 재밌는 모습을 보였습니다.
-- 학습 시킬 때 엄청난 양의 음악을 보았기 때문에, 추가 학습 없이 이런 일이 가능했을 것으로 생각됩니다.
+- Masking을 넣지 않고 모델을 작동시켜 보니 Style Transfer와 비슷하게 동작하는 재밌는 모습을 보였습니다.
+- 학습 시킬 때 엄청난 양의 음악을 사용했기 때문에, 추가 학습 없이 이런 일이 가능했을 것으로 생각됩니다.
 - 이 모델을 통해 MIR의 데이터 부족 문제를 해결할 수 있었으면 좋겠다고 말합니다.
 
 ## Conclusion
