@@ -12,3 +12,12 @@
 - Singing Synthesis and Conversion처럼 일상 대화를 학습 데이터로 사용했다.
 - Backtranslation방법을 이용해서 source singer 에 가까운 학습 데이터 생성
 - Mixup Training: 두 개의 샘플을 합쳐서 새로운 가상 Sample을 만들었다. 
+
+## Method
+### Conversion Network
+- 두 가지 단계로 이어짐
+- 1. Reconstruction -> classification Loss 최소화
+- 2. translation이 잘 되도록 학습함
+
+### Audio Input Augmentation
+- 원본 데이터를 4가지 방법을 사용하여 증강하여 사용
