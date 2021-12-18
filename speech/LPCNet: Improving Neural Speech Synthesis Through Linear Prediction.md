@@ -11,8 +11,13 @@
 - neural synthesis network를 사용하지 않은 model을 제안.
   
 # waveRNN
+- 이전 신호와 파라미터를 사용해 현재 시간의 output Sample을 생성
+- 8bits 샘플을 두개 예측 -> 시간 복잡도 감소
 - 
 # LPCNet
-
+- 저주파에 신호가 집중되는 것을 막기 위해 first-order pre-emphasis filter를 적용
+- 자귀회귀 모델을 통해 vocal tract response를 생성
+- all-pole 모델 -> correlation으로 계산 가능 = 행렬곱으로 계산 가능
+- 
 # Evaluation
 
