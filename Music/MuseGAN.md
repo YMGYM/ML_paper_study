@@ -40,3 +40,22 @@
 - GAN 에 대한 설명
 - 생성자와 구분자로 이루어지며 G와 D의 minmax loss 를 사용함
 - 최근엔 gradient panalty 를 포함한 목적 함수를 사용하기도 함 (WGAN-GP)
+
+# Proposed Model
+- 마디를 기준으로 삼음
+
+## Data Representation
+- 멀티 트랙 피아노롤 데이터를 사용했다.
+- R: 시간, S : 음의 깊이, M: 트랙 수
+  
+## Modeling the Multi-track Interdependency
+- Jammimg model : 다중 트랙별로 생성자를 따로 두는 구조
+- Composer model : 하나의 생성자가 멀티 트랙을 만들어 냄. -> 하나의 구분자
+- Hybrid model : 다중 트랙 생성자, 단일 구분자. inter-track, intra-track 의 정보 벡터를 따로 두고 구성
+
+## Modeling the temporal Structure
+- 기존 모델은 독립된 마디 단위의 음악만 생성하는 구조임.
+- Phrase 단위의 음악을 생성할 필요가 있음
+- Generation from Scratch : 시간 구조를 만들어내는 생성자를 따로 두고, 구조를 먼저 만든 뒤 구조용 latent vector을 주어짐
+- Track-conditional Generation : 시간적 구조를 사람이 준다고 가정하고 남는 부분을 만드는 모델
+- 
