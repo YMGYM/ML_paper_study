@@ -58,4 +58,11 @@
 - Phrase 단위의 음악을 생성할 필요가 있음
 - Generation from Scratch : 시간 구조를 만들어내는 생성자를 따로 두고, 구조를 먼저 만든 뒤 구조용 latent vector을 주어짐
 - Track-conditional Generation : 시간적 구조를 사람이 준다고 가정하고 남는 부분을 만드는 모델
-- 
+
+# MuseGAN
+- 4가지 input 을 사용함
+- inter-track time independent
+- inter-track time dependent
+- intra-track time independent
+- intra-track time dependent
+- 앞서 나온 구조를 모두 응용해서 temporal, bar generator 를 사용함
