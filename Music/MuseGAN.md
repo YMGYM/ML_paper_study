@@ -36,7 +36,7 @@
 - 노트의 그루핑을 위해 마디를 한 단위로 보았고, 음들을 CNN을 사용해서 탐색
 - intra-track, inter-track 한 측정 방법 두 가지 제시
 
-# Generative Adversarial Networks
+## Generative Adversarial Networks
 - GAN 에 대한 설명
 - 생성자와 구분자로 이루어지며 G와 D의 minmax loss 를 사용함
 - 최근엔 gradient panalty 를 포함한 목적 함수를 사용하기도 함 (WGAN-GP)
@@ -59,10 +59,21 @@
 - Generation from Scratch : 시간 구조를 만들어내는 생성자를 따로 두고, 구조를 먼저 만든 뒤 구조용 latent vector을 주어짐
 - Track-conditional Generation : 시간적 구조를 사람이 준다고 가정하고 남는 부분을 만드는 모델
 
-# MuseGAN
+## MuseGAN
 - 4가지 input 을 사용함
 - inter-track time independent
 - inter-track time dependent
 - intra-track time independent
 - intra-track time dependent
 - 앞서 나온 구조를 모두 응용해서 temporal, bar generator 를 사용함
+
+# Implementation
+## Dataset
+- Lakh MIDI dataset
+- 128개의 음 높이와 96 틱의 타임 시퀀스
+
+## Data Preprocessing
+- 비슷한 악기들을 합쳐서 5개 트랙 (베이스, 드럼, 기타, 피아노, 스트링)으로 사용
+- 트랙을 멜로디, 드럼 트랙으로 나눔
+- Rock 음악, 4/4박자
+- 
